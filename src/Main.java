@@ -5,6 +5,7 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.lang.reflect.Array;
 import java.util.ArrayList;
+import java.util.Arrays;
 
 public class Main {
 
@@ -21,34 +22,27 @@ public class Main {
 
         System.out.println("Zad2: "+Zad2(lista_slow));
         }
+        //zad3
+        System.out.println("Zad3: "+Zad3(lista_slow));
 
          }
-         //zad3
-private static boolean zad3(ArrayList<String> lista_slow){
-        for(String i:lista_slow) {
-            String[] slowa=i.split(" ");
-        }
 
-    int n1 = str1.length;
-    int n2 = str2.length;
+private static int Zad3(ArrayList<String> lista_slow) {
+        int count =0;
+    for (String i : lista_slow) {
+        String[] slowa = i.split(" ");
+        char[] str1=slowa[0].toCharArray();
+        char[] str2=slowa[1].toCharArray();
 
-    // If length of both strings is not
-    // same, then they cannot be anagram
-    if (n1 != n2)
-        return false;
-
-    // Sort both strings
-    Arrays.sort(str1);
-    Arrays.sort(str2);
-
-    // Compare sorted strings
-    for (int i = 0; i < n1; i++)
-        if (str1[i] != str2[i])
-            return false;
-
-    return true;
+        Arrays.sort(str1);
+        Arrays.sort(str2);
+    if(Arrays.equals(str1,str2)){
+     count++;
 }
+    }
+    return count;
 }
+
     private static int Zad2(ArrayList<String> lista_slow) {
         int count=0;
         for (String s : lista_slow) {

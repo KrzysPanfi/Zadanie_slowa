@@ -1,6 +1,3 @@
-import org.junit.Assert;
-import org.junit.Test;
-
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
@@ -8,7 +5,7 @@ import java.util.ArrayList;
 
 import static org.junit.Assert.*;
 
-public class testzad1 {
+public class Testzad1 {
     public void testzad1() {
         String filePath = "Z:slowa.txt";
         ArrayList<String> lista_slow = Wczytaj_dane(filePath);

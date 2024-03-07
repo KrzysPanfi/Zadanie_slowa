@@ -5,22 +5,37 @@ import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Arrays;
 
-public class testzad2 {
+import static org.junit.Assert.*;
 
+public class Testzad3 {
     @Test
-    public void testzad2() {
+    public  void testzad3() {
         String filePath = "Z:slowa.txt";
-        ArrayList<String> lista_slow = Wczytaj_dane(filePath);
-        int count = 0;
-        for (int i = lista_slow.size() - 1; i > 0; i--) {
-
-            if (lista_slow.get(i).contains(lista_slow.get(i - 1))) {
-                count++;
-            }
+        ArrayList<String>lista_slow=Wczytaj_dane(filePath);
+        if(lista_slow!=null){
+            assertEquals(38,Zad3(lista_slow));
         }
-        Assert.assertEquals(234,count);
+
     }
+        private static int Zad3(ArrayList<String> lista_slow) {
+            int count =0;
+            for (String i : lista_slow) {
+                String[] slowa = i.split(" ");
+                char[] str1=slowa[0].toCharArray();
+                char[] str2=slowa[1].toCharArray();
+
+                Arrays.sort(str1);
+                Arrays.sort(str2);
+                if(Arrays.equals(str1,str2)){
+                    count++;
+                }
+            }
+            return count;
+        }
+
+
     private static ArrayList<String> Wczytaj_dane(String filePath) {
         ArrayList<String> lista_slow=new ArrayList<String>();
         try {
@@ -35,11 +50,7 @@ public class testzad2 {
 
 
             while ((line = bufferedReader.readLine()) != null) {
-                String[] lines = line.split(" ");
-                String word1=lines[0];
-                String word2=lines[1];
-                lista_slow.add(word1);
-                lista_slow.add(word2);
+                lista_slow.add(line);
             }
 
             bufferedReader.close();
@@ -51,4 +62,5 @@ public class testzad2 {
             return null;
         }
     }
+
 }
