@@ -9,11 +9,75 @@ import java.util.ArrayList;
 public class Main {
 
     public static void main(String[] args) {
-
-        ArrayList<String> lista_slow = new ArrayList<String>();
+        
         String filePath = "Z:slowa.txt";
-        int num=0;
+        ArrayList<String> lista_slow = Wczytaj_dane(filePath);
+        if(lista_slow!=null){
+        //zad 1
+        System.out.println("Zad1: "+Zad1(lista_slow));
 
+
+         //zad 2
+
+        System.out.println("Zad2: "+Zad2(lista_slow));
+        }
+
+         }
+         //zad3
+private static boolean zad3(ArrayList<String> lista_slow){
+        for(String i:lista_slow) {
+            String[] slowa=i.split(" ");
+        }
+
+    int n1 = str1.length;
+    int n2 = str2.length;
+
+    // If length of both strings is not
+    // same, then they cannot be anagram
+    if (n1 != n2)
+        return false;
+
+    // Sort both strings
+    Arrays.sort(str1);
+    Arrays.sort(str2);
+
+    // Compare sorted strings
+    for (int i = 0; i < n1; i++)
+        if (str1[i] != str2[i])
+            return false;
+
+    return true;
+}
+}
+    private static int Zad2(ArrayList<String> lista_slow) {
+        int count=0;
+        for (String s : lista_slow) {
+            String[] slowa = s.split(" ");
+            String slowo1 = slowa[0];
+            String slowo2 = slowa[1];
+            if (slowo2.contains(slowo1)) {
+                count++;
+            }
+        }
+        return count;
+    }
+
+    private static int Zad1(ArrayList<String> lista_slow) {
+        int num=0;
+        for (String i: lista_slow) {
+            String[] slowa=i.split(" ");
+            for(int j=0 ;j<2;j++) {
+                char[] slowa_char = slowa[j].toCharArray();
+                if (slowa_char[slowa_char.length - 1] == 'A') {
+                    num++;
+                }
+            }
+        }
+        return num;
+    }
+
+    private static ArrayList<String> Wczytaj_dane( String filePath) {
+        ArrayList<String> lista_slow=new ArrayList<String>();
         try {
 
 
@@ -26,29 +90,16 @@ public class Main {
 
 
             while ((line = bufferedReader.readLine()) != null) {
-
-                String[] lines = line.split(",");
-               String word1=lines[0];
-               String word2=lines[1];
-                lista_slow.add(word1);
-                lista_slow.add(word2);
+                lista_slow.add(line);
             }
-            for (String i:lista_slow) {
-                char[] slowa_char=i.toCharArray();
-                if(slowa_char[slowa_char.length-1]=='A'){
-                    num++;
-                }
-            }
-            System.out.println("Zad1: "+num);
-
+            
             bufferedReader.close();
+            return lista_slow;
 
         } catch (IOException e) {
-
+            
             e.printStackTrace();
-
+            return null;
         }
-
     }
-
 }
