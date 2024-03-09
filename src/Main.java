@@ -11,24 +11,27 @@ public class Main {
 
     public static void main(String[] args) {
         
-        String filePath = "Z:slowa.txt";
+        String filePath = "C:\\Users\\PC\\Desktop\\prace szkolne\\slowa.txt";
         ArrayList<String> lista_slow = Wczytaj_dane(filePath);
-        if(lista_slow!=null){
-        //zad 1
-        System.out.println("Zad1: "+Zad1(lista_slow));
+        if(lista_slow!=null) {
+            //zad 1
+            System.out.println("Zad1: " + Zad1(lista_slow));
 
 
-         //zad 2
+            //zad 2
 
-        System.out.println("Zad2: "+Zad2(lista_slow));
+            System.out.println("Zad2: " + Zad2(lista_slow));
+
+            //zad3
+            for(String i:Zad3(lista_slow)){
+                System.out.println(i);
+            }
         }
-        //zad3
-        System.out.println("Zad3: "+Zad3(lista_slow));
-
          }
 
-private static int Zad3(ArrayList<String> lista_slow) {
-        int count =0;
+private static ArrayList<String> Zad3(ArrayList<String> lista_slow) {
+        ArrayList<String> Wynik=new ArrayList<String>();
+        Wynik.add("Zad 3: ");
     for (String i : lista_slow) {
         String[] slowa = i.split(" ");
         char[] str1=slowa[0].toCharArray();
@@ -37,10 +40,10 @@ private static int Zad3(ArrayList<String> lista_slow) {
         Arrays.sort(str1);
         Arrays.sort(str2);
     if(Arrays.equals(str1,str2)){
-     count++;
+     Wynik.add(i);
 }
     }
-    return count;
+    return Wynik;
 }
 
     private static int Zad2(ArrayList<String> lista_slow) {
